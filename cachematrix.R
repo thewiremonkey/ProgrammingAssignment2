@@ -46,7 +46,7 @@ cacheSolve <- function(x, ...) {
         inv<-x$getinv()
         if(!is.null(inv)){ ##checks to see if the variable inv is stored in the Global Environment
                 
-                #message("getting cached data") #alerts the user that the cached data is being retrieved
+                message("lucky you! The inverse matrix is already calculated") #alerts the user that the cached data is being retrieved
                 #inv<-x$getinv()
         
         }
