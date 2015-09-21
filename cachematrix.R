@@ -1,11 +1,11 @@
 ## Put comments here that give an overall description of what your
-## functions do
+## functions do:
 
 ##These functions can calculate and store the inverse of a matrix in the cache
 ##so that the script does not need to recalculate it every time it is needed.  
 
 ## The first function creates a cache from a data matrix and, if it has been calculated with cacheSolve (or 
-## if it has been independently calculate), the inverse of the matrix.
+## if it has been independently calculated), the inverse of the matrix.
 
 makeCacheMatrix <- function(x = matrix()) {
         inv=NULL  #initialize the inverse function data vector to null
@@ -43,15 +43,17 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
-        inv<-x$getinv()
-        if(!is.null(inv)){ ##checks to see if the variable inv is stored in the Global Environment
+        inv<-x$getinv() #pulls the value of inv from the getinv function in makeCacheMatrix
+        if(!is.null(inv)){ ##checks to see if the variable inv is null.  If it is not null, it loads the already-calculated
+        ##matrix.  It provides a message so the user knows that the inv matrix was alreadyt there.
                 
                 message("lucky you! The inverse matrix is already calculated") #alerts the user that the cached data is being retrieved
-                #inv<-x$getinv()
-        
+               
         }
         else
-                
+              ##if the inv variable is null, this function will create the inverse matrix and assign its value
+              ##to inv.  It then sends inv back to makeCacheMatrix and stores it via the setinv function so that it
+              ##can be used next inv is called.
                 {
                         message("hold on while I calculate the inverse")
                         data<-x$get()  #as long as the data has been cached, 
